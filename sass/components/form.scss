@@ -9,11 +9,12 @@
         color: inherit;
         padding: 1.5rem 2rem;
         border-radius: 2px;
-        background-color: rgba($color-white, .5);
+        background-color: rgba($color-white, 0.5);
         border: none;
         width: 90%;
         display: block;
         border-bottom: 3px solid transparent;
+        transition: all 0.3s;
 
         &:focus{
             outline: none;
@@ -43,5 +44,53 @@
     &__input:placeholder-shown + &__label{
         opacity: 0;
         visibility: hidden;
+        transform: translateY(-4rem);
     }
+
+    // Radio Button declarations
+
+    &__radio-group{
+        width: 49%;
+        display: inline-block;
+    }
+    &__radio-input{
+        display: none;
+    }
+
+    &__radio-label{
+        position: relative;
+        font-size: $default-font-size;
+        cursor: pointer;
+        padding-left: 4.5rem;
+    }
+
+    &__radio-button{
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        border: 5px solid $color-primary;
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: -.1rem;
+        
+        &::after{
+            content: "";
+            width: 1.3rem;
+            height: 1.3rem;
+            border-radius: 50%;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: $color-primary;
+            opacity: 0;
+        }
+    }
+
+    &__radio-input:checked ~ &__radio-label &__radio-button::after{
+        opacity: 1;
+    }
+
 }
